@@ -28,14 +28,15 @@ plot(p)
 ###Graph Summary
 This graph shows the 9 California counties with the highest incarcerated populations. The lines represent the changing incarcerated population over time from 1970 to 2020. From the data you can see that nearly all counties increased their incarcerated population over that 50 year span. However, Los Angeles County far and away had the highest increase in incarcerated population. Los Angeles also far and away has the highest incarcerated population of any CA county.
 
-```{r pressure, echo=FALSE}
+```{r black_pop, echo=FALSE}
 plot(black_pop_over_time)
 ```
 ###Plot Summary
 This graph shows the proportion of White versus Black incarcerated individuals in different regions. The graph clearly shows a strong correlation between the Southern region and higher proportions of incarcerated black individuals. The Midwest has higher proportion of black incarceration than the West. The West has the highest proportion of White incarceration with the lowest incarceration of black people.
 
 
-```{r pressure, echo=FALSE}
+```{r prop map, echo=FALSE}
+
 plot(prop_map)
 ```
 ###Plot Summary

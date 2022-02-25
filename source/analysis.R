@@ -50,6 +50,7 @@ black_pop_over_time <- ggplot(black_pop_v_total_pop, aes(x = prop_black, y = pro
     y = "Proportion of White Incarcerated Individuals",
     color = "Region"
   )
+library(usdata)
 prop_in_states <- black_pop_v_total_pop %>%
               mutate(state = abbr2state(state)) %>%
               mutate(state = tolower(state)) 
@@ -69,22 +70,7 @@ prop_map <- ggplot(state_shape) +
   title = "Proportion of Black Incarceration Across All US States",
   fill = "Proportion of Black Incarceration")
 
-View(prop_in_wa)
-install.packages(usdata)
-library(usdata)
 
-#basic map plot from textbook
-MainStates <- map_data("state")
-ggplot() + 
-  geom_polygon( data=MainStates, aes(x=long, y=lat, group=group),
-                color="black", fill="lightblue" )
-View(MainStates)
-MainStates <- rename(MainStates, state = region)
-state.abb[match(MainStates$region,state.name)]
-View(black_pop_v_total_pop)
-MergedStates <- inner_join(MainStates, black_pop_v_total_pop, by = "state")
-View(MergedStates)
-ggplot() +
-  geom_polygon( data = black_pop_v_total_pop,
-                aes(x=long, y=lat, group = group, fill = prop_black),
-                color = "white", size = .2) 
+install.packages("usdata")
+library("usdata")
+
