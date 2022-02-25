@@ -19,7 +19,7 @@ incarceration_by_race <- incarceration_by_race %>%
                          mutate(prop_native_15to64 = total_native_pop_15to64 / sum_total_pop_15to64) %>%
                          mutate(prop_latinx_15to64 = total_latinx_pop_15to64 / sum_total_pop_15to64)
 View(incarceration_by_race)
-
+#Creating summary stat list
 summary_info <- list()
 summary_info$proportion_black_15to64 <- incarceration_by_race$prop_black_15to64[1]
 summary_info$proportion_white_15to64 <- incarceration_by_race$prop_white_15to64[1]
@@ -33,14 +33,16 @@ incarceration_inca_over_time <- incarceration %>%
                                 filter(total_pop > 1000000)
 library("ggplot2")
 View(incarceration_inca_over_time)
+#creating first plot
 p <- ggplot(data = incarceration_inca_over_time, aes(x = year, y = total_pop, color = county_name)) + geom_point() + ylab("Total Incarcerated Population") + xlab("Year") + labs(color = "County Name") + ggtitle("Highest 9 California Counties in Incarcerated Population Over Time")
 
-#Displaying 
+#Filtering for second plot
 black_pop_v_total_pop <- incarceration %>%
                          mutate(prop_black = black_pop_15to64 / total_pop, na.rm = TRUE) %>%
                          mutate(prop_white = white_pop_15to64 / total_pop, na.rm = TRUE) %>%
                          filter(year == "2018")
 View(black_pop_v_total_pop)
+#creating second plot
 black_pop_over_time <- ggplot(black_pop_v_total_pop, aes(x = prop_black, y = prop_white, color = region)) + geom_point() + 
   labs (
     title = "Proportion of White Incarceration Compared to Proportion of Black Incarceration by Region",
@@ -52,10 +54,12 @@ prop_in_states <- black_pop_v_total_pop %>%
               mutate(state = abbr2state(state)) %>%
               mutate(state = tolower(state)) 
 View(prop_in_states)
+#joining two data frames
 state_shape <- map_data("state") %>%
   dplyr::rename(state = region) %>%
   left_join(prop_in_states, by = "state")
 
+#creating basic map plot
 prop_map <- ggplot(state_shape) + 
   geom_polygon(
     mapping = aes(x = long, y = lat, group = group, fill = prop_black, size = .1)) + 
@@ -68,6 +72,8 @@ prop_map <- ggplot(state_shape) +
 View(prop_in_wa)
 install.packages(usdata)
 library(usdata)
+
+#basic map plot from textbook
 MainStates <- map_data("state")
 ggplot() + 
   geom_polygon( data=MainStates, aes(x=long, y=lat, group=group),
