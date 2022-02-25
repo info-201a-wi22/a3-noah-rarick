@@ -7,6 +7,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+
 ### Introduction
 The Vera Incarceration Dataset includes data from surveys, the census, and national programs in order to visualize the trends in incarceration across America. The dataset provides county level data overtime, tracking populations by race, jail admissions and exits, jail populations based on federal programs and much more. Through this data we can assess the proportions of incarcerated individuals based on race, gender, pre-trial admittance and much more. By providing this data Vera Institute hopes to shed light on the biases of incarceration. Vera Institutes goal is to work against mass incarceration in America, raise awareness for incarceration disparities and provide racial justice. 
 
@@ -16,8 +17,12 @@ The Vera Incarceration Dataset includes data from surveys, the census, and natio
 source("../source/analysis.R")
 summary_info
 ```
+
+
 ###Summary Info Paragraph
 From the summary info you can see how incarceration affects the different races. These statistics are calculated using a cumulative sum of all incarcerated populations by race, using only the data that included populations for each race. White people are the highest portion of incarcerated individuals at .6756. Latinx are the next highest at .1406, and black individuals at .1259. These two groups form the next highest portion of the incarcerated population. The next highest is AAPI at .0497 of the incarcerated population. Native people form the lowest portion of the incarcerated population at .008. These proportions include incarcerated individuals across all counties of the United States. Different areas have drastically different distributions of incarcerated individuals by race.
+
+
 ## Including Plots
 
 You can also embed plots, for example:
@@ -25,6 +30,7 @@ You can also embed plots, for example:
 ```{r pressure, echo=FALSE}
 plot(p)
 ```
+
 ###Graph Summary
 This graph shows the 9 California counties with the highest incarcerated populations. The lines represent the changing incarcerated population over time from 1970 to 2020. From the data you can see that nearly all counties increased their incarcerated population over that 50 year span. However, Los Angeles County far and away had the highest increase in incarcerated population. Los Angeles also far and away has the highest incarcerated population of any CA county.
 
@@ -39,6 +45,8 @@ This graph shows the proportion of White versus Black incarcerated individuals i
 
 plot(prop_map)
 ```
+
+
 ###Plot Summary
 From the map of the United States you can see that the lowest proportions of black incarceration occur in the northern half of the United States. The highest proportion of black incarceration occurs in the Southern states and California. Most of the midwest looks like it has lower rates of black incarceration as well, although this didn't seem to be the case in my continuous variables plot.
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
