@@ -1,5 +1,5 @@
 setwd("~/_Code/a3-noah-rarick/source")
-incarceration <- read.csv("~/_Code/a3-noah-rarick/source/incarceration-trends/incarceration_trends.csv")
+incarceration <- read.csv("https://github.com/vera-institute/incarceration-trends/blob/master/incarceration_trends.csv")
 View(incarceration)
 
 library("dplyr")
